@@ -5,12 +5,11 @@
 #define pb push_back
 #define eb emplace_back
 #define pp pop_back
-#define FAST ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+
 using namespace std;
 
 int main(){
-    FAST
-    
+    string s;
     
     return 0;
 }
