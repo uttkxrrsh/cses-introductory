@@ -12,7 +12,7 @@ int main(){
     string s;
     unordered_set<char, int> map;
     for(int i =0; i<26; i++){
-        map.insert(itoa(i),1);
+        map[itoa(65+i)] = 0;
     }
     for(auto i: map){
         cout<<i<<"\n";
