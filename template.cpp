@@ -5,8 +5,8 @@
 #define pb push_back
 #define eb emplace_back
 #define pp pop_back
-#define rep(a, b) for(int i=a; i<b; i++)
-#define repe(a, b) for(int i=a; i<=b; i++)
+#define rep(a, b) for(auto i=a; i<b; i++)
+#define repe(a, b) for(auto i=a; i<=b; i++)
 #define w(x)  \
     int x;    \
     cin >> x; \

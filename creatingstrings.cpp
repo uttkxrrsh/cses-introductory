@@ -19,11 +19,29 @@ ll factorial(ll n){
     return (n == 1 || n==0) ? 1 : n*factorial(n-1);
 }
 
+
+void create_str(string s0, ll l, ll r,unordered_map<string, ll> &map){
+    if(l == r){
+        map[s0]++;
+    }
+    else{
+        rep(l,r){
+            swap(s0[l], s0[i]);
+            create_str(s0,l+1,r,map);
+            swap(s0[l],s0[i]);
+        }
+    }
+    return;
+}
+
+
 int main(){
     FAST
     string s0;
     getline(cin, s0);
     unordered_map<char, ll> map;
+    unordered_map<string, ll>map1;
+    vector<string> ans;
     rep(0,s0.length()){
         map[s0[i]]++;
     }
@@ -33,6 +51,16 @@ int main(){
             total /=factorial(i.s);
         }
     }
-    
+    cout<<total<<'\n';
+    create_str(s0, 0, s0.length(),map1);
+
+    unordered_map<string, ll>::iterator it;
+    for(auto i:map1){
+        ans.pb(i.f);
+    }
+    sort(all(ans));
+    for(auto i:ans){
+        cout<<i<<'\n';
+    }
     return 0;
 }
