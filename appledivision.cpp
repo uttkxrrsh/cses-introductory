@@ -16,12 +16,12 @@
 #define FAST ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 using namespace std;
 
-// ll appledivide(vector<ll> &v, ll total,ll curr, int i){
-//     if(i==0){
-//         return abs(total-curr-curr);
-//     }
-//     return min(appledivide(v,total,curr,i-1),appledivide(v,total,curr+v[i],i-1));
-// }
+ll appledivide(vector<ll> &v, ll total,ll curr, int i){
+    if(i==0){
+        return abs(total-curr-curr);
+    }
+    return min(appledivide(v,total,curr,i-1),appledivide(v,total,curr+v[i],i-1));
+}
 //recursion
 int main(){
     FAST
@@ -32,14 +32,16 @@ int main(){
         v.pb(a);
     }
     n = v.size();
-    ll total = accumulate(all(v),0);
+    ll total = accumulate(all(v),0LL);
     a = LLONG_MAX;
-    rep(i,0,(1<<n)){
-        curr = 0;
-        rep(j,0,n){
-            if(1<<j & i)curr+=v[j];
-        }
-        a = min(a,total-curr-curr);
-    }
+    // rep(i,0,(1<<n)){
+    //     curr = 0;
+    //     rep(j,0,n){
+    //         if(1<<j & i)curr+=v[j];
+    //     }
+    //     a = min(a,abs(total-curr-curr));
+    // }
+    // cout<<a;
+    cout<<appledivide(v,total,0,n-1);
     return 0;
 }
