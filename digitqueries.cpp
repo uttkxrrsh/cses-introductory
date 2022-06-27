@@ -15,19 +15,21 @@
 #define FAST ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 using namespace std;
 
-ll pass(ll &ways, ll &number){
-    if(number >10){
-        ++ways;
-    }
-    if(number ==2){
-        return 0;
-    }
-    return pass(ways, --number);
-}
 int main(){
     FAST
-    ll ways = 20;
-    ll number = 21;
-    cout<<typeid(ways).name();
+    ll value,start,numofdigits,end;
+    w(x){
+        cin>>value;
+        start=0;
+        end=0;
+        rep(i,0LL,1e18){
+            start = end+1;
+            if(value<(end+=(i+1LL)*9*pow(10,i))){
+                numofdigits =0;
+                break;
+            }                
+        }
+
+    }
     return 0;
 }
