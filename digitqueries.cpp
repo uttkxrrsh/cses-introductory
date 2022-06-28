@@ -5,6 +5,7 @@
 #define pb push_back
 #define eb emplace_back
 #define pp pop_back
+#define ln '\n'
 #define rep(i, a, b) for(auto i=a; i<b; i++)
 #define repe(i, a, b) for(auto i=a; i<=b; i++)
 #define w(x)  \
@@ -17,19 +18,28 @@ using namespace std;
 
 int main(){
     FAST
-    ll value,start,numofdigits,end;
+    ll blockstart[19],blockend[19],pow10[19],start,input,numofdigits,checkinput,blockend_,blockstart_,ansval;
+    int corrector;
+    string ansnum;
+    pow10[0] = 1; blockstart[0] = 0; blockend[0] = 0;
+    rep(i,1,19){
+        pow10[i] = pow10[i-1]*10;
+        blockstart[i] = blockend[i-1]+1;
+        blockend[i] = blockend[i-1] + 9*pow10[i-1]*i;
+    }
     w(x){
-        cin>>value;
-        start=0;
-        end=0;
-        rep(i,0LL,1e18){
-            start = end+1;
-            if(value<(end+=(i+1LL)*9*pow(10,i))){
-                numofdigits =0;
-                break;
-            }                
-        }
-
+        cin>>input;
+        numofdigits = 1;
+        while(input>=blockstart[numofdigits]) numofdigits++;
+        numofdigits--;
+        blockend_ = blockend[numofdigits];
+        blockstart_ = blockstart[numofdigits];
+        start = pow10[numofdigits-1];
+        corrector = (input-blockstart_)%numofdigits;
+        checkinput = input - corrector;
+        ansval = (checkinput-blockstart_)/numofdigits+start;
+        ansnum = to_string(ansval);
+        cout<<ansnum[corrector]<<ln;
     }
     return 0;
 }

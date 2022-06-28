@@ -3,6 +3,7 @@
 #define f first
 #define s second
 #define pb push_back
+#define '\n' ln
 #define eb emplace_back
 #define pp pop_back
 #define rep(i, a, b) for(auto i=a; i<b; i++)

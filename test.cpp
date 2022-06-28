@@ -26,8 +26,6 @@ ll pass(ll &ways, ll &number){
 }
 int main(){
     FAST
-    ll ways = 20;
-    ll number = 21;
-    cout<<typeid(ways).name();
+    
     return 0;
 }
