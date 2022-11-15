@@ -16,9 +16,12 @@
 #define FAST ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 using namespace std;
 
+getpath()
+
 int main(){
     FAST
-    
-    
+    string path;
+    getline(cin,path);
+
     return 0;
 }

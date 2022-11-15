@@ -1,31 +1,47 @@
-#include<bits/stdc++.h>
-#define ll long long
-#define f first
-#define s second
-#define pb push_back
-#define eb emplace_back
-#define pp pop_back
-#define rep(i, a, b) for(auto i=a; i<b; i++)
-#define repe(i, a, b) for(auto i=a; i<=b; i++)
-#define w(x)  \
-    int x;    \
-    cin >> x; \
-    while (x--)
-#define all(x) x.begin(), x.end()
-#define FAST ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-using namespace std;
+#include <bits/stdc++.h>
 
-ll pass(ll &ways, ll &number){
-    if(number >10){
-        ++ways;
+using namespace std;
+vector < int > majorityElement(int nums[], int n) {
+  int sz = n;
+  int num1 = -1, num2 = -1, count1 = 0, count2 = 0, i;
+  for (i = 0; i < sz; i++) {
+    if (nums[i] == num1)
+      count1++;
+    else if (nums[i] == num2)
+      count2++;
+    else if (count1 == 0) {
+      num1 = nums[i];
+      count1 = 1;
+    } else if (count2 == 0) {
+      num2 = nums[i];
+      count2 = 1;
+    } else {
+      count1--;
+      count2--;
     }
-    if(number ==2){
-        return 0;
-    }
-    return pass(ways, --number);
+  }
+  vector < int > ans;
+  count1 = count2 = 0;
+  for (i = 0; i < sz; i++) {
+    if (nums[i] == num1)
+      count1++;
+    else if (nums[i] == num2)
+      count2++;
+  }
+  if (count1 > sz / 3)
+    ans.push_back(num1);
+  if (count2 > sz / 3)
+    ans.push_back(num2);
+  return ans;
 }
-int main(){
-    FAST
-    
-    return 0;
+
+int main() {
+  int arr[] = {2,2,1,3};
+  vector < int > majority;
+  majority = majorityElement(arr, 4);
+  cout << "The majority element is ";
+
+  for (auto it: majority) {
+    cout << it << " ";
+  }
 }
